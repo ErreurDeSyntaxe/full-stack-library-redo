@@ -1,0 +1,55 @@
+/* TYPOGRAPHY */
+/* Font Sizing Scale (px) */
+/* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 */
+/* Font Weights */
+
+/* Line Heights */
+
+/* Letter Spacing */
+
+/* COLORS */
+/* 
+Main:
+tints:
+shades:
+
+Grey: #555
+tints:
+shades:
+
+Accent:
+tints:
+shades:
+*/
+
+/* BOX SHADOWS */
+
+/* BORDER RADIUSES */
+
+/* WHITESPACE  */
+/* Spacing Scale (px) */
+/* 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 */
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./font/Roboto-Regular.ttf');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+}
