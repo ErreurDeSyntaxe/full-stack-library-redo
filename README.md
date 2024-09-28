@@ -50,8 +50,8 @@ flowcharts, architecture, and
   - [ ] Responsive Design
 - [ ] Development
   - [ ] Basic HTML
-  - [ ] Board Object
-  - [ ] Player Object
+  - [x] Board Object
+  - [x] Player Object
   - [ ] Console Input
     - [ ] Squares called 1-9
     - [ ] Squares used once only
@@ -98,26 +98,32 @@ board cleared -> new game starts
 
 Class Game
 
-- Board [0, 1, 2, 3, 4, 5, 6, 7, 8]
-- Players [X, O]
-- currentPlayer
-- constructor() {  
-  eventListenerDelegation  
-  }
-- startGame()
-- findWinner()
-- declareOutcome()
+- constructor() {
+  - Board [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  - Player 1
+  - Player 2
+  - currentPlayer  
+    }
+- init()
 - offerRematch()
 - clearBoard()
+- printBoard()
+- switchPlayer()
+- declareOutcome(verdict)
+- checkWin()
+- playToken(position)
+- simulateGame()
 
 Class Player
 
-- number
-- token
+- constructor() {
+  - number
+  - token  
+    }
 
 ## Lessons & Difficulties
 
-Some lessons learned along the way
+Formatting README.md is a pain.
 
 ## Diary
 
