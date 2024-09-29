@@ -27,6 +27,10 @@ class Game {
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path></svg>'
     );
     this.activePlayerP = document.querySelectorAll('.turns-player');
+    this.modal = document.querySelector('.modal');
+    this.overlay = document.querySelector('.overlay');
+    this.btnYes = document.querySelector('.btn-yes');
+    this.btnNo = document.querySelector('.btn-no');
 
     // sets up the board, the initial values of a new game and event listeners
     this.populateBoard();
@@ -54,14 +58,27 @@ class Game {
       }
       this.playToken(e.target.dataset.id);
     });
+    this.btnYes.addEventListener('click', () => {
+      console.log('yes');
+      this.modal.classList.toggle('hidden');
+      this.overlay.classList.toggle('hidden');
+      this.init();
+    });
+    this.btnNo.addEventListener('click', () => {
+      console.log('no');
+      this.modal.classList.toggle('hidden');
+      this.overlay.classList.toggle('hidden');
+    });
   }
   // opens a modal window to offer a new game
   offerRematch() {
-    const decision = 'y';
-    if (decision.toLowerCase() === 'y')
-      setTimeout(() => {
-        this.init();
-      }, 2000);
+    this.modal.classList.toggle('hidden');
+    this.overlay.classList.toggle('hidden');
+    // const decision = 'y';
+    // if (decision.toLowerCase() === 'y')
+    //   setTimeout(() => {
+    //     this.init();
+    //   }, 2000);
     // console.log('open modal window');
   }
   // resets board to inital value
