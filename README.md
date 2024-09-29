@@ -46,25 +46,25 @@ flowcharts, architecture, and
   - [x] Features
   - [x] Flowchart
   - [x] Architecture
-  - [ ] UI Design
+  - [x] UI Design
   - [ ] Responsive Design
 - [ ] Development
-  - [ ] Basic HTML
+  - [x] Basic HTML
   - [x] Board Object
   - [x] Player Object
-  - [ ] Console Input
-    - [ ] Squares called 1-9
-    - [ ] Squares used once only
-    - [ ] Users alternate
-  - [ ] Find winner/outcome
-    - [ ] Stop game
-    - [ ] Declare winner
-    - [ ] Show winning row, column, or diagonal
-  - [ ] Offer Rematch
-    - [ ] Clear board
+  - [x] Console Input
+    - [x] Squares called 1-9
+    - [x] Squares used once only
+    - [x] Users alternate
+  - [x] Find winner/outcome
+    - [x] Stop game
+    - [x] Declare winner
+    - [x] Show winning row, column, or diagonal
+  - [x] Offer Rematch
+    - [x] Clear board
   - [ ] UI Features
     - [ ] UI informs players whose turn it is
-    - [ ] Hovering over an available square lights it up
+    - [x] Hovering over an available square lights it up
     - [ ] Hovering over an available square shows the X/O in light color
     - [ ] Clicking on a square gives the impression of depth
     - [ ] A winning line lights up in a different color
