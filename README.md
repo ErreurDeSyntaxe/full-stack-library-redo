@@ -47,7 +47,7 @@ flowcharts, architecture, and
   - [x] Flowchart
   - [x] Architecture
   - [x] UI Design
-  - [ ] Responsive Design
+  - [x] Responsive Design
 - [ ] Development
   - [x] Basic HTML
   - [x] Board Object
@@ -63,13 +63,14 @@ flowcharts, architecture, and
   - [x] Offer Rematch
     - [x] Clear board
   - [ ] UI Features
-    - [ ] UI informs players whose turn it is
+    - [x] UI informs players whose turn it is
     - [x] Hovering over an available square lights it up
-    - [ ] Hovering over an available square shows the X/O in light color
     - [ ] Clicking on a square gives the impression of depth
-    - [ ] A winning line lights up in a different color
+    - [x] A winning line lights up in a different color
     - [ ] A winning line seems to jump closer to the user
-    - [ ] A modal window opens to offer a rematch
+    - [x] A modal window opens to offer a rematch
+  - [ ] Responsive Design
+   - [ ] Media Queries
 - [ ] Fix bugs
   - [ ] No bugs yet!
 
