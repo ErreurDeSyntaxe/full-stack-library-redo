@@ -1,9 +1,10 @@
 'use strict';
 
 class Player {
-  constructor(number, token) {
+  constructor(number, token, tokenSVG) {
     this.number = number;
     this.token = token;
+    this.tokenSVG = tokenSVG;
   }
 }
 
@@ -15,8 +16,16 @@ class Game {
       [' ', ' ', ' ',
        ' ', ' ', ' ',
        ' ', ' ', ' '];
-    this.player1 = new Player(0, 'X');
-    this.player2 = new Player(1, 'O');
+    this.player1 = new Player(
+      0,
+      'X',
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>'
+    );
+    this.player2 = new Player(
+      1,
+      'O',
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path></svg>'
+    );
 
     this.init();
     this.simulateGame();
@@ -67,7 +76,11 @@ class Game {
   // displays the X's and O's on the UI
   displayBoard() {
     this.board.forEach((square, index) => {
-      document.querySelector(`.square-${index}`).textContent = square;
+      let currentSVG;
+      if (square === 'X') currentSVG = this.player1.tokenSVG;
+      if (square === 'O') currentSVG = this.player2.tokenSVG;
+      if (square === ' ') return;
+      document.querySelector(`.square-${index}`).innerHTML = currentSVG;
     });
   }
   // alternates player each time a token is successfully placed
@@ -175,11 +188,11 @@ class Game {
   // simulate gameplay
   simulateGame() {
     // X wins (player 1)
-    if (this.playToken(0)) this.checkWin();
-    if (this.playToken(4)) this.checkWin();
-    if (this.playToken(1)) this.checkWin();
-    if (this.playToken(8)) this.checkWin();
-    if (this.playToken(2)) this.checkWin();
+    // if (this.playToken(0)) this.checkWin();
+    // if (this.playToken(4)) this.checkWin();
+    // if (this.playToken(1)) this.checkWin();
+    // if (this.playToken(8)) this.checkWin();
+    // if (this.playToken(2)) this.checkWin();
     // O wins (player 2)
     // if (this.playToken(2)) this.checkWin();
     // if (this.playToken(1)) this.checkWin();
