@@ -57,13 +57,21 @@ class Game {
   }
   // opens a modal window to offer a new game
   offerRematch() {
-    console.log('open modal window');
+    const decision = 'y';
+    if (decision.toLowerCase() === 'y')
+      setTimeout(() => {
+        this.init();
+      }, 2000);
+    // console.log('open modal window');
   }
   // resets board to inital value
   clearBoard() {
     this.board.forEach((square, index) => {
       this.board[index] = ' ';
       document.querySelector(`.square-${index}`).innerHTML = ' ';
+      document
+        .querySelector(`.square-${index}`)
+        .classList.remove('losingSquare');
     });
   }
   // prints the board to the console for pre-UI development
@@ -106,13 +114,24 @@ class Game {
     this.activePlayerP[0].classList.toggle('turn-active');
     this.activePlayerP[1].classList.toggle('turn-active');
   }
+  lightUpWin(winningSquares, winningPlayer) {
+    const uiSquares = document.querySelectorAll('.square');
+    uiSquares.forEach((square, index) => {
+      console.log(square, index);
+      square.classList.add('losingSquare');
+    });
+    uiSquares[winningSquares[0]].classList.remove('losingSquare');
+    uiSquares[winningSquares[1]].classList.remove('losingSquare');
+    uiSquares[winningSquares[2]].classList.remove('losingSquare');
+  }
   // declare a winner and stop the game
-  declareOutcome(verdict = undefined) {
+  declareOutcome(winningSquares, verdict = undefined) {
     const declaration = verdict
       ? 'The game is a draw!'
       : `Player ${this.currentPlayer.number + 1} wins!`;
     console.log(declaration);
     this.gameOngoing = false;
+    this.lightUpWin(winningSquares, this.currentPlayer);
     this.offerRematch();
   }
   checkWin() {
@@ -122,7 +141,7 @@ class Game {
       this.board[3] === this.board[6] &&
       this.board[6] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([0, 3, 6]);
       return;
     }
     // center column
@@ -131,7 +150,7 @@ class Game {
       this.board[4] === this.board[7] &&
       this.board[7] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([1, 4, 7]);
       return;
     }
     // right column
@@ -140,7 +159,7 @@ class Game {
       this.board[5] === this.board[8] &&
       this.board[8] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([2, 5, 8]);
       return;
     }
     // top row
@@ -149,7 +168,7 @@ class Game {
       this.board[1] === this.board[2] &&
       this.board[2] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([0, 1, 2]);
       return;
     }
     // center row
@@ -158,7 +177,7 @@ class Game {
       this.board[4] === this.board[5] &&
       this.board[5] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([3, 4, 5]);
       return;
     }
     // bottom row
@@ -167,7 +186,7 @@ class Game {
       this.board[7] === this.board[8] &&
       this.board[8] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([6, 7, 8]);
       return;
     }
     // \ diagonal
@@ -176,7 +195,7 @@ class Game {
       this.board[4] === this.board[8] &&
       this.board[8] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([0, 4, 8]);
       return;
     }
     // / diagonal
@@ -185,12 +204,12 @@ class Game {
       this.board[4] === this.board[2] &&
       this.board[6] !== ' '
     ) {
-      this.declareOutcome();
+      this.declareOutcome([2, 4, 6]);
       return;
     }
     // check for a draw after the nineth round is played
     if (this.round1to9 === 9 && this.gameOngoing) {
-      this.declareOutcome('draw');
+      this.declareOutcome([], 'draw');
     }
     this.switchPlayer();
   }
