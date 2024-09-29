@@ -26,31 +26,44 @@ class Game {
       'O',
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path></svg>'
     );
+    this.activePlayerP = document.querySelectorAll('.turns-player');
 
+    // sets up the board, the initial values of a new game and event listeners
+    this.populateBoard();
     this.init();
-    this.simulateGame();
+    this.addEventHandlers();
+    // this.simulateGame(); // not needed anymore since the UI implementation
   }
   // initializes a new game
   init() {
     this.gameOngoing = true;
     this.round1to9 = 1;
     this.currentPlayer = this.player1;
+    this.activePlayerP[0].classList.add('turn-active');
+    this.activePlayerP[1].classList.remove('turn-active');
     this.clearBoard();
-    console.clear();
-    console.log(`Player 1 starts!`);
-    this.populateBoard();
     this.printBoard();
   }
+  // delegates event listening. clicks result in playing tokens
+  addEventHandlers() {
+    this.playArea.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!this.gameOngoing) {
+        this.offerRematch();
+        return;
+      }
+      this.playToken(e.target.dataset.id);
+    });
+  }
+  // opens a modal window to offer a new game
   offerRematch() {
-    const rematch = prompt('Would you like to play another game? y/n');
-    if (rematch.toLowerCase() === 'y') {
-      this.init();
-    }
+    console.log('open modal window');
   }
   // resets board to inital value
   clearBoard() {
     this.board.forEach((square, index) => {
       this.board[index] = ' ';
+      document.querySelector(`.square-${index}`).innerHTML = ' ';
     });
   }
   // prints the board to the console for pre-UI development
@@ -61,7 +74,7 @@ class Game {
     ${this.board[3]} | ${this.board[4]} | ${this.board[5]}
    -----------
     ${this.board[6]} | ${this.board[7]} | ${this.board[8]}`;
-    console.log(board);
+    // console.log(board);
     this.displayBoard();
   }
   // creates divs in the play area (called only once)
@@ -70,6 +83,7 @@ class Game {
       const squareDiv = document.createElement('div');
       squareDiv.classList.add('square', `square-${index}`);
       squareDiv.textContent = ' ';
+      squareDiv.setAttribute('data-id', `${index}`);
       this.playArea.appendChild(squareDiv);
     });
   }
@@ -89,6 +103,8 @@ class Game {
       ? this.player1
       : this.player2;
     this.round1to9++;
+    this.activePlayerP[0].classList.toggle('turn-active');
+    this.activePlayerP[1].classList.toggle('turn-active');
   }
   // declare a winner and stop the game
   declareOutcome(verdict = undefined) {
@@ -97,7 +113,7 @@ class Game {
       : `Player ${this.currentPlayer.number + 1} wins!`;
     console.log(declaration);
     this.gameOngoing = false;
-    // this.offerRematch();
+    this.offerRematch();
   }
   checkWin() {
     // left column
@@ -107,6 +123,7 @@ class Game {
       this.board[6] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // center column
     if (
@@ -115,6 +132,7 @@ class Game {
       this.board[7] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // right column
     if (
@@ -123,6 +141,7 @@ class Game {
       this.board[8] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // top row
     if (
@@ -131,6 +150,7 @@ class Game {
       this.board[2] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // center row
     if (
@@ -139,6 +159,7 @@ class Game {
       this.board[5] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // bottom row
     if (
@@ -147,6 +168,7 @@ class Game {
       this.board[8] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // \ diagonal
     if (
@@ -155,6 +177,7 @@ class Game {
       this.board[8] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // / diagonal
     if (
@@ -163,6 +186,7 @@ class Game {
       this.board[6] !== ' '
     ) {
       this.declareOutcome();
+      return;
     }
     // check for a draw after the nineth round is played
     if (this.round1to9 === 9 && this.gameOngoing) {
@@ -179,10 +203,8 @@ class Game {
     }
     // return typeof this.board[position];
     this.board[position] = `${this.currentPlayer.token}`;
-    console.log(
-      `Player ${this.currentPlayer.number + 1} chose square ${position}`
-    );
     this.printBoard();
+    this.checkWin();
     return true; // token successfully played
   }
   // simulate gameplay
