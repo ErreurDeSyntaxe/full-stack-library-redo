@@ -117,7 +117,6 @@ class Game {
   lightUpWin(winningSquares, winningPlayer) {
     const uiSquares = document.querySelectorAll('.square');
     uiSquares.forEach((square, index) => {
-      console.log(square, index);
       square.classList.add('losingSquare');
     });
     uiSquares[winningSquares[0]].classList.remove('losingSquare');
