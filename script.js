@@ -9,6 +9,7 @@ class Player {
 
 class Game {
   constructor() {
+    this.playArea = document.querySelector('.play-area');
     // prettier-ignore
     this.board =
       [' ', ' ', ' ',
@@ -28,6 +29,7 @@ class Game {
     this.clearBoard();
     console.clear();
     console.log(`Player 1 starts!`);
+    this.populateBoard();
     this.printBoard();
   }
   offerRematch() {
@@ -45,12 +47,28 @@ class Game {
   // prints the board to the console for pre-UI development
   printBoard() {
     const board = `
-    ${this.board[0]} | ${this.board[1]} | ${this.board[2]}
+    ${this.board[0]} | ${this.board[1]} | ${this.board[2]} 
    -----------
     ${this.board[3]} | ${this.board[4]} | ${this.board[5]}
    -----------
     ${this.board[6]} | ${this.board[7]} | ${this.board[8]}`;
     console.log(board);
+    this.displayBoard();
+  }
+  // creates divs in the play area (called only once)
+  populateBoard() {
+    this.board.forEach((square, index) => {
+      const squareDiv = document.createElement('div');
+      squareDiv.classList.add('square', `square-${index}`);
+      squareDiv.textContent = ' ';
+      this.playArea.appendChild(squareDiv);
+    });
+  }
+  // displays the X's and O's on the UI
+  displayBoard() {
+    this.board.forEach((square, index) => {
+      document.querySelector(`.square-${index}`).textContent = square;
+    });
   }
   // alternates player each time a token is successfully placed
   switchPlayer() {
@@ -66,7 +84,7 @@ class Game {
       : `Player ${this.currentPlayer.number + 1} wins!`;
     console.log(declaration);
     this.gameOngoing = false;
-    this.offerRematch();
+    // this.offerRematch();
   }
   checkWin() {
     // left column
@@ -157,11 +175,11 @@ class Game {
   // simulate gameplay
   simulateGame() {
     // X wins (player 1)
-    // if (this.playToken(0)) this.checkWin();
-    // if (this.playToken(4)) this.checkWin();
-    // if (this.playToken(1)) this.checkWin();
-    // if (this.playToken(8)) this.checkWin();
-    // if (this.playToken(2)) this.checkWin();
+    if (this.playToken(0)) this.checkWin();
+    if (this.playToken(4)) this.checkWin();
+    if (this.playToken(1)) this.checkWin();
+    if (this.playToken(8)) this.checkWin();
+    if (this.playToken(2)) this.checkWin();
     // O wins (player 2)
     // if (this.playToken(2)) this.checkWin();
     // if (this.playToken(1)) this.checkWin();
@@ -172,15 +190,15 @@ class Game {
     // if (this.playToken(6)) this.checkWin();
     // if (this.playToken(7)) this.checkWin();
     // draw
-    //   if (this.playToken(0)) this.checkWin();
-    //   if (this.playToken(4)) this.checkWin();
-    //   if (this.playToken(5)) this.checkWin();
-    //   if (this.playToken(1)) this.checkWin();
-    //   if (this.playToken(7)) this.checkWin();
-    //   if (this.playToken(8)) this.checkWin();
-    //   if (this.playToken(2)) this.checkWin();
-    //   if (this.playToken(6)) this.checkWin();
-    //   if (this.playToken(3)) this.checkWin();
+    // if (this.playToken(0)) this.checkWin();
+    // if (this.playToken(4)) this.checkWin();
+    // if (this.playToken(5)) this.checkWin();
+    // if (this.playToken(1)) this.checkWin();
+    // if (this.playToken(7)) this.checkWin();
+    // if (this.playToken(8)) this.checkWin();
+    // if (this.playToken(2)) this.checkWin();
+    // if (this.playToken(6)) this.checkWin();
+    // if (this.playToken(3)) this.checkWin();
   }
 }
 
