@@ -104,18 +104,17 @@ html {
 .play-area {
   font-size: 4.4rem;
   color: #ff6500;
-  width: 51rem; /* multiple of three so the square fit nicely */
-  height: 51rem;
+  width: 45rem; /* multiple of three so the square fit nicely */
+  height: 45rem;
   margin: 0 auto;
   border: 1.5rem solid currentColor;
   border-radius: 9px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 .square {
-  width: 100%;
-  height: 100%;
   text-align: center;
   border-radius: 5px;
   border: 9px solid transparent;
@@ -132,6 +131,10 @@ html {
     fill: #ff6500;
     stroke-width: 15px;
   }
+}
+.losingSquare svg {
+  stroke: #555;
+  fill: #555;
 }
 .square:hover {
   /* box-shadow: 0 0px 10px 0 rgba(255, 101, 0, 0.9); */
