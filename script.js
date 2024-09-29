@@ -72,14 +72,11 @@ class Game {
   }
   // opens a modal window to offer a new game
   offerRematch() {
-    this.modal.classList.toggle('hidden');
-    this.overlay.classList.toggle('hidden');
-    // const decision = 'y';
-    // if (decision.toLowerCase() === 'y')
-    //   setTimeout(() => {
-    //     this.init();
-    //   }, 2000);
-    // console.log('open modal window');
+    // lets the players see the result of the game first
+    setTimeout(() => {
+      this.modal.classList.toggle('hidden');
+      this.overlay.classList.toggle('hidden');
+    }, 1800);
   }
   // resets board to inital value
   clearBoard() {
