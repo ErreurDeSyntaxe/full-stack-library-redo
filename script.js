@@ -163,11 +163,13 @@ class Game {
     console.log(declaration);
     this.gameOngoing = false;
     console.log('Game Stopped!');
-    const winner = this.currentPlayer.number;
-    const loser = this.currentPlayer.number === 0 ? 1 : 0;
-    this.activePlayerP[winner].classList.add('winner');
-    this.activePlayerP[loser].classList.add('loser');
-    this.lightUpWin(winningSquares, this.currentPlayer);
+    if (!declaration.includes('draw')) {
+      const winner = this.currentPlayer.number;
+      const loser = this.currentPlayer.number === 0 ? 1 : 0;
+      this.activePlayerP[winner].classList.add('winner');
+      this.activePlayerP[loser].classList.add('loser');
+      this.lightUpWin(winningSquares, this.currentPlayer);
+    }
     this.offerRematch();
   }
   checkWin() {

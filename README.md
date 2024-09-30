@@ -72,6 +72,7 @@ flowcharts, architecture, and
     - [ ] Media Queries
 - [ ] Fix bugs
   - [x] Modal Window After Rematch Rejected
+  - [x] In a draw situation, a player's name is still scaled up
   - [ ] Expected Responsive Design Bug
 
 ## User Stories
