@@ -40,43 +40,61 @@ class Game {
   }
   // initializes a new game
   init() {
+    // keep track of the game development
     this.gameOngoing = true;
     this.round1to9 = 1;
+    // sets CSS and game to initial conditions
     this.currentPlayer = this.player1;
     this.activePlayerP[0].classList.add('turn-active');
     this.activePlayerP[1].classList.remove('turn-active');
+    this.activePlayerP[0].classList.remove('winner');
+    this.activePlayerP[1].classList.remove('winner');
+    this.activePlayerP[0].classList.remove('loser');
+    this.activePlayerP[1].classList.remove('loser');
+    // sets the board to blank slate
     this.clearBoard();
     this.printBoard();
+    // allows the game to offer a rematch after it was rejected
+    this.rematchRejected = false;
   }
   // delegates event listening. clicks result in playing tokens
   addEventHandlers() {
+    document.querySelector('.body').addEventListener('click', (e) => {
+      if (
+        this.rematchRejected && // rematch offer initially rejected
+        this.modal.classList.contains('hidden') && // modal window is hidde
+        !e.target.classList.contains('modal-btn') // click DOESN'T aime at modal
+      )
+        this.toggleModal();
+    }); // it happens too fast
     this.playArea.addEventListener('click', (e) => {
       e.preventDefault();
-      if (!this.gameOngoing) {
-        this.offerRematch();
-        return;
-      }
+      if (!this.gameOngoing) return;
+      if (this.rematchRejected) return;
       this.playToken(e.target.dataset.id);
     });
+    // players accept a rematch
     this.btnYes.addEventListener('click', () => {
-      console.log('yes');
-      this.modal.classList.toggle('hidden');
-      this.overlay.classList.toggle('hidden');
+      this.toggleModal();
       this.init();
     });
+    // players reject a rematch
     this.btnNo.addEventListener('click', () => {
-      console.log('no');
-      this.modal.classList.toggle('hidden');
-      this.overlay.classList.toggle('hidden');
+      this.toggleModal();
+      this.rematchRejected = true;
     });
+  }
+  // shows & hides modal window
+  toggleModal() {
+    this.modal.classList.toggle('hidden');
+    this.overlay.classList.toggle('hidden');
   }
   // opens a modal window to offer a new game
   offerRematch() {
     // lets the players see the result of the game first
     setTimeout(() => {
-      this.modal.classList.toggle('hidden');
-      this.overlay.classList.toggle('hidden');
-    }, 1800);
+      this.toggleModal();
+    }, 1500);
   }
   // resets board to inital value
   clearBoard() {
@@ -133,9 +151,9 @@ class Game {
     uiSquares.forEach((square, index) => {
       square.classList.add('losingSquare');
     });
-    uiSquares[winningSquares[0]].classList.remove('losingSquare');
-    uiSquares[winningSquares[1]].classList.remove('losingSquare');
-    uiSquares[winningSquares[2]].classList.remove('losingSquare');
+    winningSquares.forEach((winningSquare) => {
+      uiSquares[winningSquare].classList.remove('losingSquare');
+    });
   }
   // declare a winner and stop the game
   declareOutcome(winningSquares, verdict = undefined) {
@@ -144,6 +162,11 @@ class Game {
       : `Player ${this.currentPlayer.number + 1} wins!`;
     console.log(declaration);
     this.gameOngoing = false;
+    console.log('Game Stopped!');
+    const winner = this.currentPlayer.number;
+    const loser = this.currentPlayer.number === 0 ? 1 : 0;
+    this.activePlayerP[winner].classList.add('winner');
+    this.activePlayerP[loser].classList.add('loser');
     this.lightUpWin(winningSquares, this.currentPlayer);
     this.offerRematch();
   }
@@ -228,6 +251,7 @@ class Game {
   }
   // checks if position is free then marks it X or O
   playToken(position) {
+    if (this.rematchRejected) return;
     if (!this.gameOngoing) return;
     if (this.board[position] !== ' ') {
       console.log(`Square ${position} is occupied. Try again.`);
