@@ -41,7 +41,7 @@ flowcharts, architecture, and
 ## To-Do
 
 - [x] Understand the objectives
-- [ ] Plan
+- [x] Plan
   - [x] User Stories
   - [x] Features
   - [x] Flowchart
@@ -62,17 +62,17 @@ flowcharts, architecture, and
     - [x] Show winning row, column, or diagonal
   - [x] Offer Rematch
     - [x] Clear board
-  - [ ] UI Features
+  - [x] UI Features
     - [x] UI informs players whose turn it is
     - [x] Hovering over an available square lights it up
-    - [ ] Clicking on a square gives the impression of depth
+    - [x] Clicking on a square gives the impression of depth
     - [x] A winning line lights up in a different color
-    - [ ] A winning line seems to jump closer to the user
     - [x] A modal window opens to offer a rematch
   - [ ] Responsive Design
-   - [ ] Media Queries
+    - [ ] Media Queries
 - [ ] Fix bugs
-  - [ ] No bugs yet!
+  - [x] Modal Window After Rematch Rejected
+  - [ ] Expected Responsive Design Bug
 
 ## User Stories
 
