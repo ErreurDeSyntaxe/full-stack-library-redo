@@ -152,20 +152,16 @@ class Game {
   // idicates which line gave the win
   lightUpWin(winningSquares, winningPlayer) {
     const uiSquares = document.querySelectorAll('.square');
-    uiSquares.forEach((square, index) => {
-      square.classList.add('losingSquare');
-    });
-    winningSquares.forEach((winningSquare) => {
-      uiSquares[winningSquare].classList.remove('losingSquare');
-    });
+    this.dimAllSquares();
+    winningSquares.forEach((winningSquare) =>
+      uiSquares[winningSquare].classList.remove('losingSquare')
+    );
   }
   // indicates that all lines are losing
-  // dimAllSquares() {
-  //   const uiSquares = document.querySelectorAll('.square');
-  //   this.uiSquares.forEach((square) =>
-  //     uiSquares[square].classList.add('losingSquare')
-  //   );
-  // }
+  dimAllSquares() {
+    const uiSquares = document.querySelectorAll('.square');
+    uiSquares.forEach((square) => square.classList.add('losingSquare'));
+  }
   // declare a winner and stop the game
   declareOutcome(winningSquares, verdict = undefined) {
     const declaration = verdict
@@ -181,7 +177,11 @@ class Game {
       this.activePlayerP[loser].classList.add('loser');
       this.lightUpWin(winningSquares, this.currentPlayer);
     }
-    // if (declaration.includes('draw')) this.dimAllSquares();
+    if (declaration.includes('draw')) {
+      this.dimAllSquares();
+      this.activePlayerP[0].classList.add('loser');
+      this.activePlayerP[1].classList.add('loser');
+    }
     this.offerRematch();
   }
   checkWin() {
