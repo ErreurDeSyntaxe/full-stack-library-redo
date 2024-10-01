@@ -25,7 +25,7 @@ flowcharts, architecture, and
 
 <a href='http://theodinproject.com/'>The Odin Project</a> (Month Year)
 
-### Features
+### Notable Features
 
 - Start a game
 - Play, taking turns
@@ -68,6 +68,8 @@ flowcharts, architecture, and
     - [x] Clicking on a square gives the impression of depth
     - [x] A winning line lights up in a different color
     - [x] A modal window opens to offer a rematch
+    - [ ] A draw results in all squares to dim
+    - [ ] A draw results in player names to both have the "loser" class
   - [ ] Responsive Design
     - [ ] Media Queries
 - [ ] Fix bugs
@@ -84,10 +86,15 @@ flowcharts, architecture, and
 
 ## Features
 
-- As a user, I want to play Tic Tac Toe with another user
-- As a user, I want to clearly see the winning row, column, or diagonal
-- As a user, I want to clearly know when a draw has been reached
-- As a user, I want to launch a new game after the game has concluded
+- The game can be played on the same computer
+- A win results in the winning line to show up more obviously
+- A draw results in dimming of all squares and player names
+- A modal window offers a rematch when a conclusion is reached
+- The new game starts without page relaod
+- Squares light up when the mouse hovers over them
+- Squares give an impression of depth when clicked
+- Clicking on the page reopens the modal window (if originally declined)
+- The page indicates whose turn it is to play
 
 ## Flowchart
 
