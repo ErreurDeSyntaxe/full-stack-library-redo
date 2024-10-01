@@ -68,8 +68,8 @@ flowcharts, architecture, and
     - [x] Clicking on a square gives the impression of depth
     - [x] A winning line lights up in a different color
     - [x] A modal window opens to offer a rematch
-    - [ ] A draw results in all squares to dim
-    - [ ] A draw results in player names to both have the "loser" class
+    - [x] A draw results in all squares to dim
+    - [x] A draw results in player names to both have the "loser" class
   - [ ] Responsive Design
     - [ ] Media Queries
 - [ ] Fix bugs
@@ -136,4 +136,6 @@ Formatting README.md is a pain.
 
 ## Diary
 
-Some thoughts regarding the project
+I look forward to learning more about Test Drive Development. My friend found a
+bug that I should anticipated but hadn't. If I had thought more deliberately
+about all likely scenarios, I would have anticipated it (with the proper tests).
