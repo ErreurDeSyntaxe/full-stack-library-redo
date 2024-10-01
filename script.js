@@ -10,12 +10,13 @@ class Player {
 
 class Game {
   constructor() {
-    this.playArea = document.querySelector('.play-area');
     // prettier-ignore
     this.board =
       [' ', ' ', ' ',
        ' ', ' ', ' ',
-       ' ', ' ', ' '];
+        ' ', ' ', ' ']; // building the board
+
+    // giving players a number/name, a token, and a SVG to display on IU
     this.player1 = new Player(
       0,
       'X',
@@ -26,6 +27,8 @@ class Game {
       'O',
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Z"></path></svg>'
     );
+    // selecting UI elements
+    this.playArea = document.querySelector('.play-area');
     this.activePlayerP = document.querySelectorAll('.turns-player');
     this.modal = document.querySelector('.modal');
     this.overlay = document.querySelector('.overlay');
@@ -146,6 +149,7 @@ class Game {
     this.activePlayerP[0].classList.toggle('turn-active');
     this.activePlayerP[1].classList.toggle('turn-active');
   }
+  // idicates which line gave the win
   lightUpWin(winningSquares, winningPlayer) {
     const uiSquares = document.querySelectorAll('.square');
     uiSquares.forEach((square, index) => {
@@ -155,6 +159,13 @@ class Game {
       uiSquares[winningSquare].classList.remove('losingSquare');
     });
   }
+  // indicates that all lines are losing
+  // dimAllSquares() {
+  //   const uiSquares = document.querySelectorAll('.square');
+  //   this.uiSquares.forEach((square) =>
+  //     uiSquares[square].classList.add('losingSquare')
+  //   );
+  // }
   // declare a winner and stop the game
   declareOutcome(winningSquares, verdict = undefined) {
     const declaration = verdict
@@ -170,6 +181,7 @@ class Game {
       this.activePlayerP[loser].classList.add('loser');
       this.lightUpWin(winningSquares, this.currentPlayer);
     }
+    // if (declaration.includes('draw')) this.dimAllSquares();
     this.offerRematch();
   }
   checkWin() {
