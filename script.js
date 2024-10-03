@@ -123,7 +123,7 @@ class Game {
   // creates divs in the play area (called only once)
   populateBoard() {
     this.board.forEach((square, index) => {
-      const squareDiv = document.createElement('div');
+      const squareDiv = document.createElement('button');
       squareDiv.classList.add('square', `square-${index}`);
       squareDiv.textContent = ' ';
       squareDiv.setAttribute('data-id', `${index}`);
