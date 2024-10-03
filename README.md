@@ -72,6 +72,7 @@ flowcharts, architecture, and
     - [x] A draw results in player names to both have the "loser" class
   - [ ] Responsive Design
     - [ ] Media Queries
+  - [ ] Check Accessibility
 - [ ] Fix bugs
   - [x] Modal Window After Rematch Rejected
   - [x] In a draw situation, a player's name is still scaled up
