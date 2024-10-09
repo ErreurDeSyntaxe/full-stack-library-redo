@@ -8,7 +8,7 @@ I want to try doing it again without looking at the code I wrote back then.
 ### Preview
 
 <div align='center'>
-    <img src='./README/project-preview.png'>
+    <img src='./src/README/project-preview.png'>
 </div>
 
 ### Live
