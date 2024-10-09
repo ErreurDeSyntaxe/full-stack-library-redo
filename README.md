@@ -110,12 +110,14 @@ board cleared -> new game starts
 
 Class Game
 
-- constructor() {
-  - Board [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  - Player 1
-  - Player 2
-  - currentPlayer  
-    }
+constructor() {
+
+- Board [0, 1, 2, 3, 4, 5, 6, 7, 8]
+- Player 1
+- Player 2
+- currentPlayer  
+  }
+
 - init()
 - offerRematch()
 - clearBoard()
@@ -128,10 +130,11 @@ Class Game
 
 Class Player
 
-- constructor() {
-  - number
-  - token  
-    }
+constructor() {
+
+- number
+- token  
+  }
 
 ## Reflection
 
