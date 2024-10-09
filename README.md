@@ -34,9 +34,9 @@ flowcharts, architecture, and
 
 ## Built With
 
-<img src='./README/html5-logo.svg' style='width:40px; height: 40px' >
-<img src='./README/css3-logo.svg' style='width:40px; height: 40px' >
-<img src='./README/javascript-logo.svg' style='width:40px; height: 40px' >
+<img src='./src/README/html5-logo.svg' style='width:40px; height: 40px' >
+<img src='./src/README/css3-logo.svg' style='width:40px; height: 40px' >
+<img src='./src/README/javascript-logo.svg' style='width:40px; height: 40px' >
 
 ## To-Do
 
