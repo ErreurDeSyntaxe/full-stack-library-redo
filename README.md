@@ -21,7 +21,7 @@ The goal of the project is to practice JavaScript and become more familiar with
 OOP and project building. This includes writing down user stories, features,
 flowcharts, architecture, and
 
-###### Project Statement
+### Project Statement
 
 <a href='http://theodinproject.com/'>The Odin Project</a> (Month Year)
 
@@ -32,13 +32,15 @@ flowcharts, architecture, and
 - Determine the outcome of a game
 - Start a new game without reloading the page
 
-## Built With
+### Built With
 
 <img src='./src/README/html5-logo.svg' style='width:40px; height: 40px' >
 <img src='./src/README/css3-logo.svg' style='width:40px; height: 40px' >
 <img src='./src/README/javascript-logo.svg' style='width:40px; height: 40px' >
 
-## To-Do
+## Development
+
+### To-Do
 
 - [x] Understand the objectives
 - [x] Plan
@@ -78,14 +80,14 @@ flowcharts, architecture, and
   - [x] In a draw situation, a player's name is still scaled up
   - [ ] Expected Responsive Design Bug
 
-## User Stories
+### User Stories
 
 - As a user, I want to play Tic Tac Toe with another user
 - As a user, I want to clearly see the winning row, column, or diagonal
 - As a user, I want to clearly know when a draw has been reached
 - As a user, I want to launch a new game after the game has concluded
 
-## Features
+### Features
 
 - The game can be played on the same computer
 - A win results in the winning line to show up more obviously
@@ -97,14 +99,14 @@ flowcharts, architecture, and
 - Clicking on the page reopens the modal window (if originally declined)
 - The page indicates whose turn it is to play
 
-## Flowchart
+### Flowchart
 
 Page Loads -> Board is created -> Two players are created -> X starts
 -> players alternate -> clicking on an occupied square doesn't rewrite
 nor does it switch players -> winner/draw is identified -> rematch offered ->
 board cleared -> new game starts
 
-## Architecture
+### Architecture
 
 Class Game
 
@@ -131,11 +133,13 @@ Class Player
   - token  
     }
 
-## Lessons & Difficulties
+## Reflection
+
+### Lessons & Difficulties
 
 Formatting README.md is a pain.
 
-## Diary
+### Diary
 
 I look forward to learning more about Test Drive Development. My friend found a
 bug that I should anticipated but hadn't. If I had thought more deliberately
